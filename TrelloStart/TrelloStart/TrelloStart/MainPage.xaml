@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TrelloStart"
+         xmlns:view="clr-namespace:TrelloStart.View"
+             x:Class="TrelloStart.MainPage"
+                  Title="master detail page"
+                  >
+    <MasterDetailPage.Master>
+        <ContentPage Title="Trello boards">
+            <ListView x:Name="lvwBoards" SeparatorColor="White" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Frame CornerRadius="7" Margin="8" BackgroundColor='{Binding Preferences.BackgroundColor}' />
+                                <Label Grid.Column="1" Text="{Binding Title}" TextColor="Black" VerticalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage x:Name="NavPage">
+            <x:Arguments>
+                <view:DetailPage />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>
